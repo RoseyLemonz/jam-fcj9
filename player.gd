@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
 # players speed (m/s)
-@export var speed = 14
+@export var speed = 10
 # air accel (also m/s)
-@export var fall_accel = 75
+@export var fall_accel = 50
 
 var target_velocity = Vector3.ZERO
 
@@ -39,3 +39,8 @@ func _physics_process(delta):
 	# actually move character
 	velocity = target_velocity
 	move_and_slide()
+	
+	
+func _camera_control():
+	
+	$CameraPivot.position = $Pivot.position

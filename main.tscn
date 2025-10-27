@@ -1,12 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqduearrbik6x"]
+[gd_scene load_steps=7 format=3 uid="uid://bqduearrbik6x"]
 
+[ext_resource type="Texture2D" uid="uid://ce0mc615q1q5k" path="res://enemy.webp" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dku2sdnrbmj7b" path="res://player.tscn" id="1_ig7tw"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h2yge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_texture = ExtResource("1_0xm2m")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
 
 [node name="Main" type="Node3D"]
+
+[node name="Enemy" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -18.639332, -4.669735)
+mesh = SubResource("PlaneMesh_h2yge")
+surface_material_override/0 = SubResource("StandardMaterial3D_1bvp3")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 0, -18.146744, 0)
@@ -20,11 +34,8 @@ transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("BoxMesh_ig7tw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 5, 0)
-light_color = Color(0.6805689, 0.7715057, 0.67949766, 1)
+transform = Transform3D(1, 0, 0, 0, 0.80901694, 0.5877852, 0, -0.5877852, 0.80901694, 0, 5, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5153743, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97877085, 0)
