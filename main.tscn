@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqduearrbik6x"]
+[gd_scene load_steps=4 format=3 uid="uid://bqduearrbik6x"]
+
+[ext_resource type="PackedScene" uid="uid://dku2sdnrbmj7b" path="res://player.tscn" id="1_ig7tw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
 
@@ -7,7 +9,7 @@
 [node name="Main" type="Node3D"]
 
 [node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 0, -18.146744, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.4932264, 0)
@@ -18,6 +20,11 @@ transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("BoxMesh_ig7tw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.73594344, 0.67704296, 0, -0.67704296, 0.73594344, 0, 1.0111198, 1.8314891)
-light_color = Color(1, 0.7957737, 0.9941527, 1)
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 5, 0)
+light_color = Color(0.6805689, 0.7715057, 0.67949766, 1)
 shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5153743, 0)
