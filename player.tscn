@@ -20,7 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04183173, 0)
 mesh = SubResource("CapsuleMesh_sh265")
 
 [node name="ForwardIndicator" type="MeshInstance3D" parent="Pivot"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0.5, -0.5655709)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0.4224862, -0.5655709)
 mesh = SubResource("BoxMesh_4flbx")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
