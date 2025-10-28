@@ -9,7 +9,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.084273, 0)
 script = ExtResource("1_4flbx")
 
 [node name="Pivot" type="Node3D" parent="."]
@@ -25,6 +24,3 @@ mesh = SubResource("BoxMesh_4flbx")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_4flbx")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34332216, -0.40783918)
