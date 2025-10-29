@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dku2sdnrbmj7b"]
+
+[ext_resource type="Script" uid="uid://c2hsg8d77634b" path="res://game/res/player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4flbx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cyd3n"]
+
+[node name="Player" type="CharacterBody3D"]
+floor_constant_speed = true
+safe_margin = 0.005
+script = ExtResource("1_4flbx")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Body" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_sh265")
+
+[node name="ForwardIndicator" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0.4224862, -0.5655709)
+mesh = SubResource("BoxMesh_4flbx")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_cyd3n")
+
+[node name="CameraController" type="Node3D" parent="."]
+top_level = true
+
+[node name="CameraTarget" type="Node3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004523158, 0.40133864, -0.5131054)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget"]
+current = true

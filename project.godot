@@ -17,6 +17,10 @@ boot_splash/image="uid://bht23mqae8pqx"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=2000
 
+[dotnet]
+
+project/assembly_name="jam-fcj9"
+
 [input]
 
 move_forward={
