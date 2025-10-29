@@ -9,6 +9,10 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 
 [node name="Player" type="CharacterBody3D"]
+visible = false
+floor_stop_on_slope = false
+floor_constant_speed = true
+safe_margin = 0.005
 script = ExtResource("1_4flbx")
 
 [node name="Pivot" type="Node3D" parent="."]
@@ -27,8 +31,7 @@ shape = SubResource("CapsuleShape3D_4flbx")
 top_level = true
 
 [node name="CameraTarget" type="Node3D" parent="CameraController"]
-transform = Transform3D(1, 0, 0, 0, 0.9953088, 0.09674911, 0, -0.09674911, 0.9953088, 0.60567605, 1.1001468, 2.8109696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004523158, 0.40133864, -0.5131054)
 
 [node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget"]
-transform = Transform3D(1, 0, 0, 0, 0.9924865, 0.12235439, 0, -0.12235439, 0.9924865, 0.37881494, 0.57754165, 0.63761294)
 current = true

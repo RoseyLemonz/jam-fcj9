@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wfx21h3l8wr3"
-path.s3tc="res://.godot/imported/tiles_normal.png-0dada787e0dc5dbaecd88300e36ebeff.s3tc.ctex"
+uid="uid://dtl3ut35d6okn"
+path.s3tc="res://.godot/imported/genblock_mat_top_normal.png-99b59ea0f0c8eb3cae5c48e358e59988.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://mdl/textures/tiles_normal.png"
-dest_files=["res://.godot/imported/tiles_normal.png-0dada787e0dc5dbaecd88300e36ebeff.s3tc.ctex"]
+source_file="res://res/textures/genblock_mat_top_normal.png"
+dest_files=["res://.godot/imported/genblock_mat_top_normal.png-99b59ea0f0c8eb3cae5c48e358e59988.s3tc.ctex"]
 
 [params]
 
@@ -27,7 +27,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://mdl/textures/tiles_normal.png"
+roughness/src_normal="res://res/textures/genblock_mat_top_normal.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

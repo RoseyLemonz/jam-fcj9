@@ -1,15 +1,17 @@
 extends CharacterBody3D
 
 # players speed
-@export var def_speed = 4
+@export var def_speed = 4.0
 @export var speed = def_speed
 # air accel
-@export var fall_accel = 30
+@export var def_faccel = 40.0
+@export var fall_accel = def_faccel
 # vertical impulse
-@export var jump_impulse = 12
+@export var def_jumpulse = 12.0
+@export var jump_impulse = def_jumpulse
 # player scale
-@export var pl_scale = 1
-
+@export var def_pscale = 1.0
+@export var pl_scale = def_pscale
 
 var target_velocity = Vector3.ZERO
 
@@ -39,23 +41,23 @@ func _physics_process(delta):
 	# ground velocity
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed 
-	
+		
 	# jumping
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		target_velocity.y = jump_impulse
+	
+	# jump longer if holding space
+	if Input.is_action_pressed("jump"):
+		fall_accel = def_faccel - 20
+	else:
+		fall_accel = lerp(fall_accel, def_faccel, 0.10)
 		
 	# crouching
 	if Input.is_action_pressed("crouch"):
-		scale.y = pl_scale * 0.6
-		speed = def_speed / 2
-	
-	# crouch jump height
-	if Input.is_action_pressed("crouch") and Input.is_action_pressed("jump"):
-		scale.y = pl_scale * 0.8
-	
-	# set scale to normal when not crouching
-	if not Input.is_action_pressed("crouch"):
-		scale.y = pl_scale
+		scale.y = def_pscale / 2
+		speed = def_speed / 1.5
+	else: 
+		scale.y = def_pscale
 		speed = def_speed
 	
 	# air velocity
@@ -66,4 +68,4 @@ func _physics_process(delta):
 	velocity = target_velocity
 	move_and_slide()
 	# camera
-	$CameraController.position = lerp($CameraController.position, position, 0.1)
+	$CameraController.position = lerp($CameraController.position, position, 0.3)
