@@ -4,9 +4,9 @@ extends CharacterBody3D
 @export var def_speed = 4
 @export var speed = def_speed
 # air accel
-@export var fall_accel = 50
+@export var fall_accel = 30
 # vertical impulse
-@export var jump_impulse = 14
+@export var jump_impulse = 12
 # player scale
 @export var pl_scale = 1
 
@@ -14,6 +14,7 @@ extends CharacterBody3D
 var target_velocity = Vector3.ZERO
 
 func _physics_process(delta):
+
 	# store direction
 	var direction = Vector3.ZERO
 	
@@ -40,7 +41,7 @@ func _physics_process(delta):
 	target_velocity.z = direction.z * speed 
 	
 	# jumping
-	if is_on_floor() and Input.is_action_pressed("jump"):
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		target_velocity.y = jump_impulse
 		
 	# crouching
@@ -64,3 +65,5 @@ func _physics_process(delta):
 	# actually move character
 	velocity = target_velocity
 	move_and_slide()
+	# camera
+	$CameraController.position = lerp($CameraController.position, position, 0.1)
