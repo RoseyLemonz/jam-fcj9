@@ -4,10 +4,10 @@ extends CharacterBody3D
 @export var def_speed = 4.0
 @export var speed = def_speed
 # air accel
-@export var def_faccel = 40.0
+@export var def_faccel = 45.0
 @export var fall_accel = def_faccel
 # vertical impulse
-@export var def_jumpulse = 12.0
+@export var def_jumpulse = 10.0
 @export var jump_impulse = def_jumpulse
 # player scale
 @export var def_pscale = 1.0

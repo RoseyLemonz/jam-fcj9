@@ -6,11 +6,9 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_4flbx"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cyd3n"]
 
 [node name="Player" type="CharacterBody3D"]
-visible = false
-floor_stop_on_slope = false
 floor_constant_speed = true
 safe_margin = 0.005
 script = ExtResource("1_4flbx")
@@ -18,6 +16,7 @@ script = ExtResource("1_4flbx")
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Body" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_sh265")
 
 [node name="ForwardIndicator" type="MeshInstance3D" parent="Pivot"]
@@ -25,7 +24,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0.4224862, -0.5655709)
 mesh = SubResource("BoxMesh_4flbx")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_4flbx")
+shape = SubResource("CylinderShape3D_cyd3n")
 
 [node name="CameraController" type="Node3D" parent="."]
 top_level = true
