@@ -3,6 +3,3 @@
 [ext_resource type="PackedScene" uid="uid://ctvx3dkwhx88a" path="res://mdl/blocksv1.glb" id="1_8t6y1"]
 
 [node name="blocksv1" instance=ExtResource("1_8t6y1")]
-
-[node name="lvl_wallcornerblock" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.991825, 0, 0.0064225197)
