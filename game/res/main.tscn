@@ -52,7 +52,7 @@ sky_mode = 1
 environment = ExtResource("1_nmqiy")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("2_dga6e")]
-transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 10.097, 2.5, 6.036)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 10.097, 1.3668427, 6.036)
 collision_mask = 6
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -76,7 +76,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0063066483, 1.0647707, 0)
 shape = SubResource("BoxShape3D_yajld")
 
 [node name="Label3D" type="Label3D" parent="Triggers/EntranceText"]
-transform = Transform3D(0.7187333, 0, -0.69528586, 0, 1, 0, 0.69528586, 0, 0.7187333, 3.8277884, 0.37194633, 1.8713211)
+transform = Transform3D(0.7187333, 0, -0.69528586, 0, 1, 0, 0.69528586, 0, 0.7187333, 4.1005526, 0.90826607, 1.8713211)
 text = "Controls:
 WASD - Movement
 Q, E, <- and -> - Turn camera
@@ -87,12 +87,26 @@ outline_size = 32
 uppercase = true
 script = SubResource("GDScript_3n07w")
 
+[node name="HallwayText" type="Label3D" parent="Triggers/EntranceText"]
+transform = Transform3D(0.8916982, 0.0070969174, 0.45257482, 0.18106183, 0.91080034, -0.37102458, -0.4148384, 0.412786, 0.8108741, -0.05989933, 2.468913, -10.799395)
+text = "You know, being honest with you,
+This tunnel is all this game has"
+font = ExtResource("5_3n07w")
+font_size = 58
+outline_size = 32
+
 [node name="HallwayVoice" type="Area3D" parent="Triggers"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 75.824615, -8.594238, 4.235014)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.86106, -8.594238, 4.235011)
 
 [node name="Hallway" type="CollisionShape3D" parent="Triggers/HallwayVoice"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1436168, -0.36174905, 0.14123774)
 shape = SubResource("BoxShape3D_yajld")
+
+[node name="HallwayBanter" type="Label3D" parent="Triggers/HallwayVoice"]
+transform = Transform3D(0.96437466, -0.05546401, -0.25866064, -0.03155867, 0.9466705, -0.32065377, 0.26265115, 0.31739324, 0.9111947, 0, 1.7031088, -12.104084)
+text = "Like, honestly"
+font = ExtResource("5_3n07w")
+font_size = 72
+outline_size = 32
 
 [node name="HallwayConfirm" type="Area3D" parent="Triggers"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 157.02284, -10.779051, 2.2418995)
