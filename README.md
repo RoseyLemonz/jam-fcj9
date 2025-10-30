@@ -1,2 +1,4 @@
-# jam-fcj9
-Game for the Finnish College Jam #9
+# I think the dev forgot a wall there
+Game made for the Finnish College Jam #9
+
+Simple walking game, where it never ends.
