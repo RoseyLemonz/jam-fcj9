@@ -101,7 +101,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17173958, 1.0647707, -0.39
 shape = SubResource("BoxShape3D_yajld")
 
 [node name="PigSign" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7847524, -2.089446, 4.3881483)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, -2, 7.5)
 collision_layer = 4
 
 [node name="Board" type="MeshInstance3D" parent="PigSign"]

@@ -8,6 +8,8 @@ const PL_SCALE = 2.4
 
 var CUR_SPEED = SPEED
 
+var pigswitch = 0
+
 func _physics_process(delta: float) -> void:
 	
 	# Camera controls
@@ -44,7 +46,12 @@ func _physics_process(delta: float) -> void:
 	$CameraController.position = lerp($CameraController.position, position, 0.3)
 
 func _on_pig_sign_area_entered(area: Area3D) -> void:
-	$\"../PigSign\".position.y = 2
+	if (pigswitch == 0):
+		$\"../PigSign\".position.y = 2
+		pigswitch = 1
+	else:
+		pass
+	
 "
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bxfqr"]
