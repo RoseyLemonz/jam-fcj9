@@ -31,7 +31,7 @@ func _on_hallway_link_area_entered(area: Area3D) -> void:
 		await get_tree().create_timer(6).timeout
 		OS.shell_open("https://itch.io/jam/finnish-college-jam-9/entries")
 		openedlink = 1
-		$"../HallwayLink/HallwayBanter".text = "Well you already opened the\nlink,and you're still here"
+		$"../HallwayLink/HallwayBanter".text = "Well you already opened the\nlink, and you're still here"
 
 func _on_hallway_force_stop_area_entered(area: Area3D) -> void:
 	$"../HallwayLink/HallwayBanter".visible = 0			#5
