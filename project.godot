@@ -17,6 +17,7 @@ config/name_localized={
 config/version="0.0.2"
 run/main_scene="uid://bqduearrbik6x"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/show_image=false
 boot_splash/image="uid://bht23mqae8pqx"
 config/icon="uid://bb8x0jq3wsws8"
 boot_splash/minimum_display_time=2000
@@ -84,6 +85,10 @@ keylook_right={
 3d_physics/layer_1="player"
 3d_physics/layer_2="world"
 3d_physics/layer_3="entities"
+
+[physics]
+
+3d/default_gravity=25.0
 
 [rendering]
 

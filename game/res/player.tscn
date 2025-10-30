@@ -5,7 +5,7 @@
 [sub_resource type="GDScript" id="GDScript_mai31"]
 script/source = "extends CharacterBody3D
 
-const SPEED = 8.0
+const SPEED = 10.0
 const PL_SCALE = 1.25
 
 var CUR_SPEED = SPEED
