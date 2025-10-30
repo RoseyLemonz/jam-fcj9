@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 # players speed
-@export var def_speed = 4.0
+@export var def_speed = 6.0
 @export var speed = def_speed
 # air accel
 @export var def_faccel = 45.0

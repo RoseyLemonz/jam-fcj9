@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="jam-fcj9"
+config/version="0.0.1"
 run/main_scene="uid://bqduearrbik6x"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/image="uid://bht23mqae8pqx"
