@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4okda2sf7gfa"]
-
-[ext_resource type="PackedScene" uid="uid://2sy2ysrlw45i" path="res://assets/mdl/blocksv2.glb" id="1_xhbgk"]
-
-[node name="blocksv2" instance=ExtResource("1_xhbgk")]

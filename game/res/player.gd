@@ -1,24 +1,36 @@
 extends CharacterBody3D
 
 # players speed
-@export var def_speed = 6.0
-@export var speed = def_speed
+var def_speed = 6.0
+var speed = def_speed
 # air accel
-@export var def_faccel = 45.0
-@export var fall_accel = def_faccel
-# vertical impulse
-@export var def_jumpulse = 10.0
-@export var jump_impulse = def_jumpulse
+var def_faccel = 45.0
+var fall_accel = def_faccel
 # player scale
-@export var def_pscale = 1.0
-@export var pl_scale = def_pscale
+var def_pscale = 1.0
+var pl_scale = def_pscale
 
 var target_velocity = Vector3.ZERO
 
 func _physics_process(delta):
 
+	# camera rotation
+	if Input.is_action_pressed("keylook_left"):
+		$CameraController.rotate_y(deg_to_rad(2))
+	if Input.is_action_pressed("keylook_right"):
+		$CameraController.rotate_y(deg_to_rad(-2))
+	if Input.is_action_pressed("keylook_up"):
+		$CameraController.rotate_x(deg_to_rad(2))
+	if Input.is_action_pressed("keylook_down"):
+		$CameraController.rotate_x(deg_to_rad(-2))
+	#	print($CameraController.rotation_degrees)
+	if $CameraController.rotation_degrees.x >= 90:
+		$CameraController.rotate_x(deg_to_rad(-2))
+	if $CameraController.rotation_degrees.x <= -65:
+		$CameraController.rotate_x(deg_to_rad(2))
+
 	# store direction
-	var direction = Vector3.ZERO
+	var direction = (transform_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	# check for movement in x direction 
 	if Input.is_action_pressed("move_right"):
@@ -41,16 +53,6 @@ func _physics_process(delta):
 	# ground velocity
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed 
-		
-	# jumping
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		target_velocity.y = jump_impulse
-	
-	# jump longer if holding space
-	if Input.is_action_pressed("jump"):
-		fall_accel = def_faccel - 20
-	else:
-		fall_accel = lerp(fall_accel, def_faccel, 0.10)
 		
 	# crouching
 	if Input.is_action_pressed("crouch"):

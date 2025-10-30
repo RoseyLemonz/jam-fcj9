@@ -1,27 +1,63 @@
-[gd_scene load_steps=5 format=3 uid="uid://dku2sdnrbmj7b"]
+[gd_scene load_steps=4 format=3 uid="uid://dku2sdnrbmj7b"]
 
-[ext_resource type="Script" uid="uid://c2hsg8d77634b" path="res://game/res/player.gd" id="1_4flbx"]
+[sub_resource type="GDScript" id="GDScript_mai31"]
+script/source = "extends CharacterBody3D
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+const SPEED = 8.0
+const PL_SCALE = 2.4
 
-[sub_resource type="BoxMesh" id="BoxMesh_4flbx"]
+var CUR_SPEED = SPEED
+
+func _physics_process(delta: float) -> void:
+	
+	# Camera controls
+	if Input.is_action_pressed(\"keylook_left\"):
+		$CameraController.rotate_y(deg_to_rad(2))
+	if Input.is_action_pressed(\"keylook_right\"):
+		$CameraController.rotate_y(deg_to_rad(-2))
+	
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir = Input.get_vector(\"move_left\", \"move_right\", \"move_forward\", \"move_back\")
+	var direction = ($CameraController.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * CUR_SPEED
+		velocity.z = direction.z * CUR_SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, CUR_SPEED)
+		velocity.z = move_toward(velocity.z, 0, CUR_SPEED)
+
+	# crouching
+	if Input.is_action_just_pressed(\"crouch\"):
+		scale.y = PL_SCALE / 2
+		CUR_SPEED = SPEED / 2
+	if Input.is_action_just_released(\"crouch\"):
+		scale.y = PL_SCALE
+		CUR_SPEED = SPEED
+
+	move_and_slide()
+	# camera
+	$CameraController.position = lerp($CameraController.position, position, 0.3)
+"
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bxfqr"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cyd3n"]
 
 [node name="Player" type="CharacterBody3D"]
 floor_constant_speed = true
 safe_margin = 0.005
-script = ExtResource("1_4flbx")
+script = SubResource("GDScript_mai31")
 
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Body" type="MeshInstance3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_sh265")
-
-[node name="ForwardIndicator" type="MeshInstance3D" parent="Pivot"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0.4224862, -0.5655709)
-mesh = SubResource("BoxMesh_4flbx")
+transform = Transform3D(0.5, 0, 0, 0, 0.6, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("CylinderMesh_bxfqr")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_cyd3n")
@@ -30,7 +66,7 @@ shape = SubResource("CylinderShape3D_cyd3n")
 top_level = true
 
 [node name="CameraTarget" type="Node3D" parent="CameraController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004523158, 0.40133864, -0.5131054)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget"]
 current = true

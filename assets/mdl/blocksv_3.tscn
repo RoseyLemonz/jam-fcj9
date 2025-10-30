@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://brghqxh822i0l"]
-
-[ext_resource type="PackedScene" uid="uid://b27vjcfw23pi1" path="res://assets/mdl/blocksv3.glb" id="1_xief5"]
-
-[node name="blocksv3" instance=ExtResource("1_xief5")]
