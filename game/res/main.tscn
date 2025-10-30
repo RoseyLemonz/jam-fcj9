@@ -1,23 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqduearrbik6x"]
+[gd_scene load_steps=16 format=3 uid="uid://bqduearrbik6x"]
 
 [ext_resource type="Environment" uid="uid://dh6n33ns4plhx" path="res://game/lvl/lvl_enviroment_normal.tres" id="1_nmqiy"]
 [ext_resource type="PackedScene" uid="uid://dku2sdnrbmj7b" path="res://game/res/player.tscn" id="2_dga6e"]
 [ext_resource type="Texture2D" uid="uid://dqan0w5jbnbl7" path="res://assets/img/piggy.png" id="4_3n07w"]
 [ext_resource type="MeshLibrary" uid="uid://dfbuspcfcbk4q" path="res://game/lvl/lib_blocks.tres" id="4_yajld"]
+[ext_resource type="FontFile" uid="uid://busxgemma2xrx" path="res://assets/fnt/BitcountGridSingle.ttf" id="5_3n07w"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oh3q5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yajld"]
 size = Vector3(8.959337, 6.4270344, 0.21875)
 
-[sub_resource type="GDScript" id="GDScript_yajld"]
-resource_name = "triggerpig"
-script/source = "extends Area3D
+[sub_resource type="GDScript" id="GDScript_3n07w"]
+resource_name = "labelhide"
+script/source = "extends Label3D
 
-func _on_body_entered(body : Node3D):
-	print(\"test\")
-	if body.is_in_group(\"Player\"):
-		print(\"test1\")
+func _on_entrance_text_area_entered(area: Area3D) -> void:
+	visible = 0
 "
 
 [sub_resource type="BoxMesh" id="BoxMesh_ov40x"]
@@ -53,7 +52,7 @@ sky_mode = 1
 environment = ExtResource("1_nmqiy")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("2_dga6e")]
-transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 10.0966625, 1.7249956, 6.0359716)
+transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 10.097, 2.5, 6.036)
 collision_mask = 6
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -69,12 +68,24 @@ metadata/_editor_floor_ = Vector3(-28, 4, -65)
 [node name="Triggers" type="Node3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.9649887, 11.444299, 2.8145576)
 
-[node name="EntranceVoice" type="Area3D" parent="Triggers"]
+[node name="EntranceText" type="Area3D" parent="Triggers"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.814557, -9.444299, 4.235011)
 
-[node name="Entrance" type="CollisionShape3D" parent="Triggers/EntranceVoice"]
+[node name="Entrance" type="CollisionShape3D" parent="Triggers/EntranceText"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0063066483, 1.0647707, 0)
 shape = SubResource("BoxShape3D_yajld")
+
+[node name="Label3D" type="Label3D" parent="Triggers/EntranceText"]
+transform = Transform3D(0.7187333, 0, -0.69528586, 0, 1, 0, 0.69528586, 0, 0.7187333, 3.8277884, 0.37194633, 1.8713211)
+text = "Controls:
+WASD - Movement
+Q, E, <- and -> - Turn camera
+Ctrl - Crouch"
+font = ExtResource("5_3n07w")
+font_size = 70
+outline_size = 32
+uppercase = true
+script = SubResource("GDScript_3n07w")
 
 [node name="HallwayVoice" type="Area3D" parent="Triggers"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 75.824615, -8.594238, 4.235014)
@@ -94,7 +105,6 @@ shape = SubResource("BoxShape3D_yajld")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.237514, 0)
 collision_layer = 4
 collision_mask = 7
-script = SubResource("GDScript_yajld")
 
 [node name="PigSign" type="CollisionShape3D" parent="Triggers/PigSign"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17173958, 1.0647707, -0.390625)
@@ -130,4 +140,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3n07w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14981079, -0.30859375, -1.4917002)
 shape = SubResource("BoxShape3D_3n07w")
 
+[connection signal="area_entered" from="Triggers/EntranceText" to="Triggers/EntranceText/Label3D" method="_on_entrance_text_area_entered"]
 [connection signal="area_entered" from="Triggers/PigSign" to="Player" method="_on_pig_sign_area_entered"]
